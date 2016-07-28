@@ -59,8 +59,8 @@ class Robot
     @items.inject(0) { |total_weight, item|  total_weight += item.weight }
   end
 
-  def wound(damage)
-    if shields > 0
+  def wound(damage, ignores_shields=false)
+    if shields > 0 && !ignores_shields
       @shields -= damage
       if shields < 0
         @health += shields
